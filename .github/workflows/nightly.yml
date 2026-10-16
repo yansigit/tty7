@@ -226,6 +226,7 @@ jobs:
       # staging dir) that must not reach the release assets.
       - uses: actions/upload-artifact@v7
         with:
+          retention-days: 7
           name: nightly-${{ matrix.os }}-${{ matrix.arch }}
           path: |
             tty7/dist/*.dmg
@@ -325,6 +326,7 @@ jobs:
       - uses: actions/upload-artifact@v7
         if: steps.probe.outputs.present == 'true'
         with:
+          retention-days: 7
           name: nightly-${{ matrix.asset }}
           path: tty7/dist/${{ matrix.asset }}
           if-no-files-found: error
@@ -418,6 +420,7 @@ jobs:
       - uses: actions/upload-artifact@v7
         if: steps.probe.outputs.present == 'true'
         with:
+          retention-days: 7
           name: nightly-${{ matrix.asset }}
           path: tty7/dist/${{ matrix.asset }}
           if-no-files-found: error
